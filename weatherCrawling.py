@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup  # pip install beautifulsoup4
 
 inputArea = input("날씨를 조회하려는 지역을 입력하세요:")
 
-weatherHtml = requests.get("https://search.naver.com/search.naver?&query={inputAre}날씨")
+weatherHtml = requests.get(f"https://search.naver.com/search.naver?&query={inputArea}날씨")
 # https://search.naver.com/search.naver?&query=한남동날씨
 # print(weatherHtml.text)
 
