@@ -1,8 +1,7 @@
 import requests  # pip install requests
-
-# https://search.naver.com/search.naver?&query=한남동날씨
-
 from bs4 import BeautifulSoup  # pip install beautifulsoup4
+# 크롤링에 필수 2가지
+# https://search.naver.com/search.naver?&query=한남동날씨
 
 inputArea = input("날씨를 조회하려는 지역을 입력하세요:")
 
@@ -23,8 +22,13 @@ todayTempText = todayTempText[6:11].strip()
 print(f"현재온도: {todayTempText}")
 # print(todayTempText[6:11])
 
-yesterdayTempText = weatherSoup.find("span", {"class":"temperature up"}).text
-yesterdayTempText = yesterdayTempText.strip()
+
+# slicing
+yesterdayTempText = weatherSoup.find("p", {"class":"summary"}).text
+yesterdayTempText = yesterdayTempText[:15].strip()
+
+# yesterdayTempText = weatherSoup.find("span", {"class":"temperature up"}).text
+# yesterdayTempText = yesterdayTempText.strip()
 print(f"어제날씨비교: {yesterdayTempText}")
 
 todayWeatherText = weatherSoup.find("span", {"class":"weather before_slash"}).text
